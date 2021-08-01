@@ -1,4 +1,5 @@
 import type {ComponentPropsWithoutRef, Ref} from 'react'
+import {UseFormRegisterReturn} from 'react-hook-form'
 
 type InputType = keyof Pick<JSX.IntrinsicElements, 'input' | 'textarea'>
 type InputTypeMap<T extends InputType> = T extends 'input'
@@ -9,23 +10,25 @@ type InputTypeMap<T extends InputType> = T extends 'input'
 
 interface BaseProps<T extends InputType> {
 	labelText: string
-	inputProps: {name: string; id: string} & Omit<
-		ComponentPropsWithoutRef<T>,
-		'className' | 'ref'
-	>
-	inputRef?: Ref<InputTypeMap<T>>
+	inputProps:
+		| {name: string; id: string} & Omit<
+				ComponentPropsWithoutRef<T>,
+				'className' | 'ref'
+		  >
+	inputRef?: Ref<InputTypeMap<T>> | UseFormRegisterReturn
 	extraClassNames?: string[]
+	register: any
 }
 
 type Props =
 	| ({multiline?: false} & BaseProps<'input'>)
-	| ({multiline?: true} & BaseProps<'textarea'>)
+	| ({multiline: true} & BaseProps<'textarea'>)
 
 const TextInput = (props: Props): JSX.Element => {
 	const inputElement = props.multiline ? (
-		<textarea ref={props.inputRef} {...props.inputProps} className="" />
+		<textarea {...props.inputProps} />
 	) : (
-		<input ref={props.inputRef} {...props.inputProps} className="" />
+		<input {...props.inputProps} {...props.register} />
 	)
 
 	return (

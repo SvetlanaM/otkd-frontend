@@ -1,16 +1,31 @@
 import ImeiAPI from '../api/imei'
+import ImeiForm from '../components/ImeiForm'
 
-const tryApiCall = async () => {
-	const {data, status} = await ImeiAPI.update_tracker(220, 860599004673080)
+type FormInputs = {
+	team_number: number
+	imei_number: number
+}
+
+const onSubmit = async (formData: FormInputs) => {
+	console.log(formData)
+	const {data, status} = await ImeiAPI.update_tracker(
+		formData.team_number,
+		formData.imei_number
+	)
 
 	if (status !== 200) {
 		console.log(data.errors)
+		return false
 	}
 
-	console.log(data)
+	console.log(data.old_data.imei)
+	return true
 }
 
-console.log(tryApiCall().catch((data) => data.errors))
-const ImeiForm = (): JSX.Element => <div>...</div>
+const Imei = (): JSX.Element => (
+	<div>
+		<ImeiForm onSubmit={onSubmit} />
+	</div>
+)
 
-export default ImeiForm
+export default Imei
