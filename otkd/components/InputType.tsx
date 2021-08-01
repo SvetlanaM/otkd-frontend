@@ -28,13 +28,19 @@ const TextInput = (props: Props): JSX.Element => {
 	const inputElement = props.multiline ? (
 		<textarea {...props.inputProps} />
 	) : (
-		<input {...props.inputProps} {...props.register} />
+		<input
+			{...props.inputProps}
+			{...props.register}
+			className={`p-2 form-input mt-1 block w-full border-1 rounded ${props.extraClassNames?.join(
+				' '
+			)}`}
+		/>
 	)
 
 	return (
-		<div className="">
-			<label htmlFor={props.inputProps.id} className="">
-				{props.labelText}
+		<div className="mb-5 rounded-md text-left">
+			<label htmlFor={props.inputProps.id} className="block">
+				<span className="text-gray-700 font-bold">{props.labelText}</span>
 			</label>
 			{inputElement}
 		</div>

@@ -1,5 +1,8 @@
+import Head from 'next/head'
 import ImeiAPI from '../api/imei'
 import ImeiForm from '../components/ImeiForm'
+import MainContentWithHeader from '../components/MainContent'
+import {APP_NAME} from '../utils/constant'
 
 type FormInputs = {
 	team_number: number
@@ -23,9 +26,15 @@ const onSubmit = async (formData: FormInputs) => {
 }
 
 const Imei = (): JSX.Element => (
-	<div>
-		<ImeiForm onSubmit={onSubmit} />
-	</div>
+	<>
+		<Head>
+			<title>{`IMEI | ${APP_NAME}`}</title>
+			<meta name="description" content="" />
+		</Head>
+		<MainContentWithHeader>
+			<ImeiForm onSubmit={onSubmit} />
+		</MainContentWithHeader>
+	</>
 )
 
 export default Imei

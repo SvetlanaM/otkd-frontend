@@ -13,7 +13,7 @@ const MainContentWithHeader = ({
 				<div className="w-full text-center font-medium">{APP_NAME}</div>
 			</div>
 		</nav>
-		<div className="mt-12 py-8 px-10">{children}</div>
+		<div className="mt-12 py-8 px-10 justify-center flex">{children}</div>
 	</div>
 )
 

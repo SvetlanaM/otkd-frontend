@@ -22,7 +22,10 @@ export const TextInputItem = ({
 	error,
 }: TextInputItemProps & {error?: FieldError}): JSX.Element => {
 	const minLength = 5
-
+	const imeiFormStyle = [
+		'focus:ring-purple-medium focus:border-purple-medium',
+		'border-blue-dark',
+	]
 	return (
 		<div>
 			<TextInput
@@ -36,6 +39,7 @@ export const TextInputItem = ({
 				}}
 				labelText={label}
 				register={register(id)}
+				extraClassNames={imeiFormStyle}
 			/>
 			{error && (
 				<div className="error" role="alert" aria-live="assertive">

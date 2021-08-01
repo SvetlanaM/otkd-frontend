@@ -12,11 +12,16 @@ module.exports = {
 					light: '#a7aac6',
 				},
 				green: '#5adb82',
+				orange: '#e65514',
 			},
 		},
 	},
 	variants: {
 		extend: {},
 	},
-	plugins: [require('@tailwindcss/forms')],
+	plugins: [
+		require('@tailwindcss/forms')({
+			strategy: 'class',
+		}),
+	],
 }
