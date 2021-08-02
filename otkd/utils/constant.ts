@@ -51,3 +51,10 @@ export const TABLE_HEADER: TableHeader[] = [
 		use_in_export: true,
 	},
 ]
+
+export enum VaccinationTypeEnum {
+	vaccination = 'Certifikát o očkovaní (1. alebo 2. dávkou)',
+	antigen_test = 'Antigénový test',
+	pcr_test = 'PCR test',
+	cured_confirmation = 'Potvrdenie o prekonaní COVID-19',
+}

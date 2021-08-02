@@ -10,7 +10,6 @@ type FormInputs = {
 }
 
 const onSubmit = async (formData: FormInputs) => {
-	console.log(formData)
 	const {data, status} = await ImeiAPI.update_tracker(
 		formData.team_number,
 		formData.imei_number
