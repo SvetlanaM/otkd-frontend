@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import {toast} from 'react-toastify'
 import ImeiAPI from '../api/imei'
 import ImeiForm from '../components/ImeiForm'
 import MainContentWithHeader from '../components/MainContent'
@@ -17,24 +18,24 @@ const onSubmit = async (formData: FormInputs) => {
 	)
 
 	if (status !== 200) {
-		console.log(data.errors)
-		return false
+		return data.errors
 	}
 
-	console.log(data.old_data.imei)
-	return true
+	return data
 }
 
-const Imei = (): JSX.Element => (
-	<>
-		<Head>
-			<title>{`IMEI | ${APP_NAME}`}</title>
-			<meta name="description" content="" />
-		</Head>
-		<MainContentWithHeader>
-			<ImeiForm onSubmit={onSubmit} />
-		</MainContentWithHeader>
-	</>
-)
+const Imei = (): JSX.Element => {
+	return (
+		<>
+			<Head>
+				<title>{`IMEI | ${APP_NAME}`}</title>
+				<meta name="description" content="" />
+			</Head>
+			<MainContentWithHeader>
+				<ImeiForm onSubmit={onSubmit} />
+			</MainContentWithHeader>
+		</>
+	)
+}
 
 export default Imei
