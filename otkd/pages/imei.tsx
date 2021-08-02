@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import {toast} from 'react-toastify'
 import ImeiAPI from '../api/imei'
 import ImeiForm from '../components/ImeiForm'
 import MainContentWithHeader from '../components/MainContent'
