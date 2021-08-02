@@ -26,19 +26,21 @@ const ImeiForm = ({onSubmit}: ImeiFormProps) => {
 		<form onSubmit={handleSubmit(onSubmitForm)} className="w-2/6">
 			<TextInputItem
 				id="team_number"
-				label="Číslo tímu"
+				label="Číslo tímu*"
 				type="number"
 				register={register}
+				error={errors}
 			/>
 			<TextInputItem
 				id="imei_number"
-				label="IMEI číslo"
+				label="IMEI číslo*"
 				type="number"
 				register={register}
+				error={errors}
 			/>
 			<button
 				type="submit"
-				className="mt-8 flex w-full bg-orange text-white text-center justify-center p-3 rounded-md hover:bg-purple-medium">
+				className="mt-5 flex w-full bg-orange text-white text-center justify-center p-3 rounded-md hover:bg-purple-medium">
 				Zmeniť IMEI tímu
 			</button>
 		</form>

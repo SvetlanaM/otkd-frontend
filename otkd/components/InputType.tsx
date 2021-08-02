@@ -38,8 +38,8 @@ const TextInput = (props: Props): JSX.Element => {
 	)
 
 	return (
-		<div className="mb-5 rounded-md text-left">
-			<label htmlFor={props.inputProps.id} className="block">
+		<div className="my-3 rounded-md text-left">
+			<label htmlFor={props.inputProps.id} className="block mb-2">
 				<span className="text-gray-700 font-bold">{props.labelText}</span>
 			</label>
 			{inputElement}
