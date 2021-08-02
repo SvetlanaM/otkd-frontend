@@ -1,14 +1,16 @@
 import {useState} from 'react'
 
 const MobileDescription = (): JSX.Element => {
-	const [showMore, setShowMore] = useState(false)
+	const [showMore, setShowMore] = useState(true)
 	return (
-		<div className="mt-4 font-lighter leading-1 tracking-wide text-sm text-purple-light">
+		<div className="mt-6 font-lighter leading-1 tracking-wide text-sm text-purple-light">
 			Dokument je možné nahrať priamo v aplikácii, prípadne sa ním preukázať na
 			štarte v deň pretekov.
 			<br />
 			<br />
-			<button onClick={() => setShowMore(!showMore)}>
+			<button
+				onClick={() => setShowMore(!showMore)}
+				className="block md:hidden">
 				{!showMore ? 'Viac informácií' : 'Skryť'}
 			</button>
 			{showMore && (
