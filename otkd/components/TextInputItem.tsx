@@ -29,7 +29,6 @@ export const TextInputItem = ({
 }: TextInputItemProps & {
 	error?: DeepMap<FieldValues, FieldError>
 }): JSX.Element => {
-	const minLength = 5
 	const imeiFormStyle = [
 		'focus:ring-purple-medium focus:border-purple-medium',
 		'border-blue-dark',
@@ -38,6 +37,18 @@ export const TextInputItem = ({
 
 	const isTeamNumber = (team_number: number) =>
 		team_numbers.includes(Number(team_number))
+
+	const getKeyValue =
+		<U extends keyof T, T extends object>(key: U) =>
+		(obj: T) =>
+			obj[key]
+
+	interface FormRule {
+		required: boolean
+		minLength: number
+		maxLength: number
+		validate: () => void
+	}
 
 	const formRules: formRulesType = {
 		team_number: {
@@ -65,7 +76,8 @@ export const TextInputItem = ({
 		},
 	}
 
-	const getFormRules = (key: keyof formRulesType) => formRules[key]
+	const getFormRules = (key: any) =>
+		getKeyValue<keyof formRulesType, formRulesType>(key)(formRules)
 
 	const errorTypes = ['required', 'minLength', 'maxLength', 'validate']
 

@@ -34,7 +34,7 @@ const ImeiForm = ({onSubmit}: ImeiFormProps) => {
 			.then(() => setTimeout(() => setMessage([]), 6000))
 			.catch((data) =>
 				setMessage([
-					`Nastala chyba. Skúste neskôr alebo skontrolujte zadané dáta. ${data.errors}`,
+					`Nastala chyba. Skúste neskôr alebo skontrolujte zadané dáta.`,
 					'bg-red-500',
 				])
 			)

@@ -16,14 +16,9 @@ const onSubmit = async (formData: FormInputs) => {
 		formData.team_number,
 		formData.imei_number
 	)
-
 	if (status !== 200) {
 		return data.errors
 	}
-
-	console.log(data)
-	console.log(status)
-
 	return data
 }
 
