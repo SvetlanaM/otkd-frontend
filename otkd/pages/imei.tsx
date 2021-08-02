@@ -7,7 +7,7 @@ import {APP_NAME} from '../utils/constant'
 
 type FormInputs = {
 	team_number: number
-	imei_number: number
+	imei_number: string
 }
 
 const onSubmit = async (formData: FormInputs) => {
@@ -20,6 +20,9 @@ const onSubmit = async (formData: FormInputs) => {
 	if (status !== 200) {
 		return data.errors
 	}
+
+	console.log(data)
+	console.log(status)
 
 	return data
 }

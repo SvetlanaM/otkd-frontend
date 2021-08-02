@@ -5,7 +5,7 @@ import {TextInputItem} from './TextInputItem'
 
 type FormInputs = {
 	team_number: number
-	imei_number: number
+	imei_number: string
 }
 
 interface ImeiFormProps {
@@ -22,19 +22,23 @@ const ImeiForm = ({onSubmit}: ImeiFormProps) => {
 
 	const onSubmitForm: SubmitHandler<FormInputs> = (data) =>
 		onSubmit(data)
-			.then((data) =>
-				setMessage([
-					`Dáta pre tím ${data.old_data.team_number} zmenené z pôvodného IMEI ${data.old_data.imei}.`,
-					'bg-green',
-				])
+			.then(
+				(data) =>
+					data &&
+					data.old_data &&
+					setMessage([
+						`Dáta pre tím ${data.old_data.team_number} zmenené z pôvodného IMEI ${data.old_data.imei}.`,
+						'bg-green',
+					])
 			)
-			.then(() => setTimeout(() => setMessage(''), 5000))
+			.then(() => setTimeout(() => setMessage([]), 6000))
 			.catch((data) =>
 				setMessage([
-					`Nastala chyba. Skúste neskôr alebo skontrolujte zadané dáta.`,
+					`Nastala chyba. Skúste neskôr alebo skontrolujte zadané dáta. ${data.errors}`,
 					'bg-red-500',
 				])
 			)
+			.then(() => setTimeout(() => setMessage([]), 5000))
 
 	return (
 		<div className="block w-2/6">
@@ -54,7 +58,7 @@ const ImeiForm = ({onSubmit}: ImeiFormProps) => {
 				<TextInputItem
 					id="imei_number"
 					label="IMEI číslo*"
-					type="number"
+					type="text"
 					register={register}
 					error={errors}
 				/>

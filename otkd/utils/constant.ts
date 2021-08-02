@@ -1,4 +1,4 @@
-export const APP_NAME = 'OTKD administrácia - COVID19'
+export const APP_NAME = 'OTKD administrácia'
 
 type TableHeader = {
 	field: string

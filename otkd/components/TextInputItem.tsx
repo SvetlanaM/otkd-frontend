@@ -34,7 +34,7 @@ export const TextInputItem = ({
 		'focus:ring-purple-medium focus:border-purple-medium',
 		'border-blue-dark',
 	]
-	const team_numbers = Array.from(Array(250).keys())
+	const team_numbers = Array.from(Array(300).keys())
 
 	const isTeamNumber = (team_number: number) =>
 		team_numbers.includes(Number(team_number))
@@ -73,7 +73,6 @@ export const TextInputItem = ({
 		error: DeepMap<FieldValues, FieldError>,
 		type: string
 	): JSX.Element => {
-		console.log(id)
 		return error[id] && error[id].type === type && errorResponses[id][type]
 	}
 
