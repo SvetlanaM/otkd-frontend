@@ -6,6 +6,7 @@ import {TextInputItem} from '../TextInputItem'
 import {useS3Upload} from 'next-s3-upload'
 import TeamsAPI from '../../api/covid'
 import {Dialog} from '@headlessui/react'
+import Image from 'next/image'
 
 type FormInputs = {
 	vaccination_type: string
@@ -104,7 +105,16 @@ const MobileUploadForm = ({team_number, runner_id}: MobileUploadFormProps) => {
               focus:outline-none focus:bg-purple-medium focus:border-none
               focus:border focus:ring-purple-100 focus:ring-opacity-50 placeholder-gray text-left"
 						onClick={openFileDialog}>
-						Nahrať alebo odfotiť potvrdenie
+						<div className="flex items-center">
+							<Image
+								src={'/icons/file_upload.svg'}
+								alt="Nahrat subor"
+								width={16}
+								height={16}
+								className="mb-0 file-upload-icon mr-3"
+							/>{' '}
+							<p className="ml-1">Nahrať alebo odfotiť potvrdenie</p>
+						</div>
 					</button>
 					<Controller
 						name="document_url"
@@ -118,7 +128,9 @@ const MobileUploadForm = ({team_number, runner_id}: MobileUploadFormProps) => {
 						<div className="mt-3.5 text-red-600">Dokument je povinný!</div>
 					)}
 					{documentUrl && (
-						<div className="mt-3.5">Dokument načítaný: {documentName}</div>
+						<div className="mt-3.5 text-sm text-purple-light">
+							Dokument načítaný: {documentName}
+						</div>
 					)}
 				</div>
 

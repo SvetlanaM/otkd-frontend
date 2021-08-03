@@ -1,20 +1,53 @@
-import {useState} from 'react'
+import {useEffect, useRef, useState} from 'react'
+import Image from 'next/image'
 
 const MobileDescription = (): JSX.Element => {
+	const ref = useRef(null)
+
+	useEffect(() => {
+		console.log('ref', ref.current ? ref.current.scrollWidth : 0)
+		ref.current && Number(window.innerWidth) < 780 && setShowMore(false)
+	}, [ref])
+
 	const [showMore, setShowMore] = useState(true)
 	return (
-		<div className="mt-6 font-lighter leading-1 tracking-wide text-sm text-purple-light">
+		<div
+			className="mt-6 font-lighter leading-1 tracking-wide text-sm text-purple-light"
+			ref={ref}>
 			Dokument je možné nahrať priamo v aplikácii, prípadne sa ním preukázať na
 			štarte v deň pretekov.
 			<br />
 			<br />
-			<button
-				onClick={() => setShowMore(!showMore)}
-				className="block md:hidden">
-				{!showMore ? 'Viac informácií' : 'Skryť'}
-			</button>
+			{ref.current && Number(window.innerWidth) < 780 && (
+				<button
+					onClick={() => setShowMore(!showMore)}
+					className="w-full focus:outline-none">
+					{!showMore ? (
+						<div className="flex justify-between w-full">
+							<p>Viac informácií</p>
+							<Image
+								src={'/icons/right.svg'}
+								alt="Sipka"
+								width={20}
+								height={20}
+							/>
+						</div>
+					) : (
+						<div className="flex justify-between w-full">
+							<p>Skryť</p>
+							<Image
+								src={'/icons/right.svg'}
+								alt="Sipka"
+								width={20}
+								height={20}
+								className="rotate-90 transform"
+							/>
+						</div>
+					)}
+				</button>
+			)}
 			{showMore && (
-				<ol className="mt-3">
+				<ol className="mt-3.5">
 					<li>
 						1. Maximálne 7 dní staré PCR vyšetrenie na prítomnosť vírusu
 						SARS-CoV-2 s negatívnym výsledkom,
