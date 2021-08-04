@@ -22,17 +22,16 @@ const ImeiForm = ({onSubmit}: ImeiFormProps) => {
 
 	const onSubmitForm: SubmitHandler<FormInputs> = (data) =>
 		onSubmit(data)
-			.then(
-				(data) =>
-					data &&
-					data.old_data &&
-					setMessage([
-						`Dáta pre tím ${data.old_data.team_number} zmenené z pôvodného IMEI ${data.old_data.imei}.`,
-						'bg-green',
-					])
+			.then((data) =>
+				data && data.old_data
+					? setMessage([
+							`Dáta pre tím ${data.old_data.team_number} zmenené z pôvodného IMEI ${data.old_data.imei}.`,
+							'bg-green',
+					  ])
+					: setMessage([`Nový tím a tracker založený.`, 'bg-green'])
 			)
-			.then(() => setTimeout(() => setMessage([]), 6000))
-			.catch((data) =>
+			.then(() => setTimeout(() => setMessage([]), 7000))
+			.catch(() =>
 				setMessage([
 					`Nastala chyba. Skúste neskôr alebo skontrolujte zadané dáta.`,
 					'bg-red-500',
@@ -41,7 +40,7 @@ const ImeiForm = ({onSubmit}: ImeiFormProps) => {
 			.then(() => setTimeout(() => setMessage([]), 5000))
 
 	return (
-		<div className="block w-2/6">
+		<div className="block w-full md:w-2/6">
 			{message && (
 				<div className={`w-full ${type} text-white py-5 px-4 rounded`}>
 					{message}

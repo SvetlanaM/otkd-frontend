@@ -18,9 +18,9 @@ const MobileDescription = (): JSX.Element => {
 			<br />
 			<br />
 			{ref.current && Number(window.innerWidth) < 780 && (
-				<button
+				<a
 					onClick={() => setShowMore(!showMore)}
-					className="w-full focus:outline-none">
+					className="w-full focus:outline-none font-semibold">
 					{!showMore ? (
 						<div className="flex justify-between w-full">
 							<p>Viac informácií</p>
@@ -43,23 +43,23 @@ const MobileDescription = (): JSX.Element => {
 							/>
 						</div>
 					)}
-				</button>
+				</a>
 			)}
 			{showMore && (
 				<ol className="mt-3.5">
-					<li>
+					<li className="pb-2">
 						1. Maximálne 7 dní staré PCR vyšetrenie na prítomnosť vírusu
 						SARS-CoV-2 s negatívnym výsledkom,
 					</li>
-					<li>
+					<li className="pb-2">
 						2. Maximálne 72 hodín staré antigénové testovanie s negatívnym
 						výsledkom,
 					</li>
-					<li>
+					<li className="pb-2">
 						3. Očkovanie proti ochoreniu COVID-19 (14 dní po druhej dávke alebo
 						21 dní po prvej dávke) formou certifikátu alebo QR kódu
 					</li>
-					<li>
+					<li className="pb-2">
 						4. Maximálne 180 dní staré laboratórne potvrdenie o prekonaní
 						ochorenia COVID-19
 					</li>

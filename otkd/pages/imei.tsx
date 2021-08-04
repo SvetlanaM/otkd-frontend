@@ -17,6 +17,7 @@ const onSubmit = async (formData: FormInputs) => {
 	if (status !== 200) {
 		return data.errors
 	}
+
 	return data
 }
 
