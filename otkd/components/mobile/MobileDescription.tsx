@@ -5,7 +5,6 @@ const MobileDescription = (): JSX.Element => {
 	const ref = useRef(null)
 
 	useEffect(() => {
-		console.log('ref', ref.current ? ref.current.scrollWidth : 0)
 		ref.current && Number(window.innerWidth) < 780 && setShowMore(false)
 	}, [ref])
 

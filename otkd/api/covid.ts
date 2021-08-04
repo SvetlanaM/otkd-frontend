@@ -27,6 +27,18 @@ const TeamsAPI = {
 			status,
 		}
 	},
+	get: async () => {
+		const {data, status} = await axios.get(`/team`, {
+			headers: {
+				'Content-Type': 'application/json',
+				'Authorization': `Bearer ${process.env.NEXT_PUBLIC_AUTH_TOKEN}`,
+			},
+		})
+		return {
+			data,
+			status,
+		}
+	},
 }
 
 export default TeamsAPI

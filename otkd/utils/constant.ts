@@ -1,60 +1,93 @@
+import {optionTypes, showDocument} from './renderTableTypes'
+
 export const APP_NAME = 'OTKD administrácia'
 
-type TableHeader = {
+export enum VaccinationTypeEnum {
+	vaccination = 'Potvrdenie o očkovaní',
+	antigen_test = 'Antigénový test',
+	pcr_test = 'PCR test',
+	cured_confirmation = 'Potvrdenie o prekonaní COVID-19',
+}
+interface TableHeader {
 	field: string
-	use: string
-	use_in_search: boolean
-	use_in_export: boolean
+	headerName: string
+	editable: boolean
+	width: number
+	valueGetter?: (e: any) => any
+	type?: any
+	renderEditCell?: (e: any) => any
+	renderCell?: (e: any) => any
+}
+
+const setFormatDate = (myDate: any): string => {
+	let date = myDate.row.created_date && new Date(myDate.row.created_date)
+
+	return date
+		? date.getDate() + '.' + date.getMonth() + '.' + date.getFullYear()
+		: '--'
+}
+
+const getEnumValue = (key: string): string => {
+	let keyName = key.row.type
+
+	return keyName && VaccinationTypeEnum[keyName]
 }
 
 export const TABLE_HEADER: TableHeader[] = [
 	{
 		field: 'team_number',
-		use: 'Číslo tímu',
-		use_in_search: true,
-		use_in_export: true,
+		headerName: 'Tím',
+		editable: false,
+		width: 130,
 	},
 	{
 		field: 'team_name',
-		use: 'Meno tímu',
-		use_in_search: true,
-		use_in_export: true,
+		headerName: 'Meno tímu',
+		editable: false,
+		width: 200,
 	},
 	{
-		field: 'team_number_runner_number',
-		use: 'Číslo bežca',
-		use_in_search: false,
-		use_in_export: true,
+		field: 'number',
+		headerName: 'Bežec',
+		editable: false,
+		width: 130,
 	},
 	{
-		field: 'team_number_runner_fullname',
-		use: 'Meno bežca',
-		use_in_search: true,
-		use_in_export: true,
+		field: 'name',
+		headerName: 'Meno bežca',
+		editable: false,
+		width: 200,
 	},
 	{
-		field: 'confirmation_type',
-		use: 'Typ potvrdenia',
-		use_in_search: false,
-		use_in_export: true,
+		field: 'type',
+		headerName: 'Typ potvrdenia',
+		editable: false,
+		width: 200,
+		// valueGetter: getEnumValue,
+		type: 'string',
+		// renderEditCell: optionTypes,
+		renderCell: getEnumValue,
 	},
 	{
-		field: 'confirmation_type_updated_date',
-		use: 'Dátum nahratia potvrdenia',
-		use_in_search: false,
-		use_in_export: true,
+		field: 'url',
+		headerName: 'Potvrdenie',
+		editable: false,
+		width: 200,
+		type: 'string',
+		renderCell: showDocument,
 	},
 	{
-		field: 'confirmation_type_checkbox',
-		use: 'Potvrdenie nahraté?',
-		use_in_search: true,
-		use_in_export: true,
+		field: 'created_date',
+		headerName: 'Dátum nahratia',
+		editable: false,
+		width: 200,
+		valueGetter: setFormatDate,
+	},
+	{
+		field: 'document_validated',
+		headerName: 'Potvrdenie nahraté?',
+		editable: true,
+		width: 230,
+		type: 'boolean',
 	},
 ]
-
-export enum VaccinationTypeEnum {
-	vaccination = 'Certifikát o očkovaní (1. alebo 2. dávkou)',
-	antigen_test = 'Antigénový test',
-	pcr_test = 'PCR test',
-	cured_confirmation = 'Potvrdenie o prekonaní COVID-19',
-}
