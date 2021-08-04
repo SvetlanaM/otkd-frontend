@@ -40,7 +40,7 @@ const ImeiForm = ({onSubmit}: ImeiFormProps) => {
 			.then(() => setTimeout(() => setMessage([]), 5000))
 
 	return (
-		<div className="block w-full md:w-2/6">
+		<div className="w-full md:w-2/6">
 			{message && (
 				<div className={`w-full ${type} text-white py-5 px-4 rounded`}>
 					{message}
