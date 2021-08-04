@@ -31,7 +31,7 @@ const AdminPage = ({teams}: AdminPageProps) => {
 	const onToggleEditMode = (id: any) => {
 		console.log(id)
 		// console.log(id.props.value)
-		// console.log(rows.find((item) => item.id === Number(id.id)))
+		console.log(rows.find((item) => item.id === Number(id.id)))
 	}
 
 	return (

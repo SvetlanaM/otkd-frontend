@@ -3,9 +3,10 @@ import {
 	GridCellParams,
 	GridCellValue,
 	GridEditCellPropsParams,
+	GridEditRowsModel,
 } from '@material-ui/data-grid'
 import Link from 'next/link'
-import {useMemo} from 'react'
+import {useCallback, useMemo, useState} from 'react'
 
 export enum VaccinationTypeEnum {
 	vaccination = 'Potvrdenie o očkovaní',
@@ -31,23 +32,31 @@ const values = (params) =>
 			<option
 				value={key}
 				key={key}
-				selected={VaccinationTypeEnum[key] == params}
-				disabled={params}>
+				selected={VaccinationTypeEnum[key] == params}>
 				{VaccinationTypeEnum[key]}
 			</option>
 		)
 	})
 
-export function optionTypes(params: GridCellParams): JSX.Element {
+export function OptionTypes(params: GridCellParams): JSX.Element {
+	const {id, value, api, field} = params
+
+	// console.log(id, value, field)
+	const handleChange = (event) => {
+		api.setEditCellValue({id, field, value: String(event.target.value)}, event)
+		// Check if the event is not from the keyboard
+		// https://github.com/facebook/react/issues/7407
+		if (event.nativeEvent.clientX !== 0 && event.nativeEvent.clientY !== 0) {
+			api.commitCellChange({id, field})
+			api.setCellMode(id, field, 'view')
+		}
+	}
+
 	return (
 		<>
-			{params.value ? (
-				params.value.toString()
-			) : (
-				<select className="w-full">
-					{values(params.value ? params.value.toString() : '')}
-				</select>
-			)}
+			<select className="w-full" value={String(value)} onChange={handleChange}>
+				{values(params.value ? params.value.toString() : '')}
+			</select>
 		</>
 	)
 }

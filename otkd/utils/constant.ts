@@ -1,4 +1,4 @@
-import {optionTypes, showDocument} from './renderTableTypes'
+import {OptionTypes, showDocument} from './renderTableTypes'
 
 export const APP_NAME = 'OTKD administrácia'
 
@@ -29,7 +29,6 @@ const setFormatDate = (myDate: any): string => {
 
 const getEnumValue = (key: any): string => {
 	let keyName = key.row.type
-
 	return keyName && VaccinationTypeEnum[keyName]
 }
 
@@ -61,11 +60,10 @@ export const TABLE_HEADER: TableHeader[] = [
 	{
 		field: 'type',
 		headerName: 'Typ potvrdenia',
-		editable: false,
+		editable: true,
 		width: 200,
 		// valueGetter: getEnumValue,
-		type: 'string',
-		// renderEditCell: optionTypes,
+		renderEditCell: OptionTypes,
 		renderCell: getEnumValue,
 	},
 	{
@@ -82,6 +80,7 @@ export const TABLE_HEADER: TableHeader[] = [
 		editable: false,
 		width: 200,
 		valueGetter: setFormatDate,
+		type: 'date',
 	},
 	{
 		field: 'document_validated',
