@@ -27,7 +27,7 @@ const setFormatDate = (myDate: any): string => {
 		: '--'
 }
 
-const getEnumValue = (key: string): string => {
+const getEnumValue = (key: any): string => {
 	let keyName = key.row.type
 
 	return keyName && VaccinationTypeEnum[keyName]

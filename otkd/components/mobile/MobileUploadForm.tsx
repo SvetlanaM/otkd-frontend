@@ -2,10 +2,9 @@ import {useMemo, useState} from 'react'
 import {useForm, SubmitHandler, Controller} from 'react-hook-form'
 import {VaccinationTypeEnum} from '../../utils/constant'
 
-import {TextInputItem} from '../TextInputItem'
 import {useS3Upload} from 'next-s3-upload'
 import TeamsAPI from '../../api/covid'
-import {Dialog} from '@headlessui/react'
+
 import Image from 'next/image'
 
 type FormInputs = {
