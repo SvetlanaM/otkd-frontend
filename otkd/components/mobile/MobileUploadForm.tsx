@@ -133,8 +133,8 @@ const MobileUploadForm = ({team_number, runner_id}: MobileUploadFormProps) => {
 
 					<div
 						className={`${
-							documentUrl && 'mt-4 h-5 mt-2'
-						} text-sm text-purple-light`}>
+							documentUrl && 'mt-4 h-10 mt-2'
+						} text-sm text-purple-light flex items-center justify-center`}>
 						{!isLoading ? (
 							documentUrl && `Dokument načítaný: ${documentName}`
 						) : (
@@ -146,8 +146,8 @@ const MobileUploadForm = ({team_number, runner_id}: MobileUploadFormProps) => {
 				<button
 					type="submit"
 					disabled={!documentUrl}
-					className={`mt-6 flex w-full text-white text-center justify-center p-2.5 rounded-md font-semibold uppercase ${
-						!documentUrl ? 'bg-purple-light' : 'bg-orange'
+					className={`flex w-full text-white text-center justify-center p-2.5 rounded-md font-semibold uppercase ${
+						!documentUrl ? 'bg-purple-light mt-6' : 'bg-orange mt-4'
 					}`}>
 					Nahrať potvrdenie
 				</button>
