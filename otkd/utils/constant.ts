@@ -62,7 +62,6 @@ export const TABLE_HEADER: TableHeader[] = [
 		headerName: 'Typ potvrdenia',
 		editable: true,
 		width: 200,
-		// valueGetter: getEnumValue,
 		renderEditCell: OptionTypes,
 		renderCell: getEnumValue,
 	},

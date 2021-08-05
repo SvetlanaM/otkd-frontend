@@ -1,9 +1,6 @@
-import {VaccinationTypeEnum} from './../utils/constant'
-
 export interface TeamList {
 	teams: Team[]
 }
-
 export interface Team {
 	team: TeamType
 }

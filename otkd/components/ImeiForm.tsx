@@ -1,6 +1,5 @@
 import {useState} from 'react'
 import {useForm, SubmitHandler} from 'react-hook-form'
-
 import {TextInputItem} from './TextInputItem'
 
 type FormInputs = {

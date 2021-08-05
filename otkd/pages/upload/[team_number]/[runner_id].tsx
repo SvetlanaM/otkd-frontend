@@ -1,11 +1,8 @@
 import Head from 'next/head'
-import TeamsAPI from '../../../api/covid'
 import {APP_NAME} from '../../../utils/constant'
 import {useRouter} from 'next/router'
-import Description from '../../../components/mobile/MobileDescription'
 import MobileUploadForm from '../../../components/mobile/MobileUploadForm'
 import MobileWrapper from '../../../components/mobile/MobileWrapper'
-import {useState} from 'react'
 import MobileDescription from '../../../components/mobile/MobileDescription'
 
 type FormInputs = {

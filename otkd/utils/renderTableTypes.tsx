@@ -1,12 +1,4 @@
-import {
-	GridCellModeChangeParams,
-	GridCellParams,
-	GridCellValue,
-	GridEditCellPropsParams,
-	GridEditRowsModel,
-} from '@material-ui/data-grid'
-import Link from 'next/link'
-import {useCallback, useMemo, useState} from 'react'
+import {GridCellParams} from '@material-ui/data-grid'
 
 export enum VaccinationTypeEnum {
 	vaccination = 'Potvrdenie o očkovaní',

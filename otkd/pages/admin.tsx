@@ -1,21 +1,12 @@
 import Head from 'next/head'
 import MainContentWithHeader from '../components/MainContent'
-import {APP_NAME, TABLE_HEADER, VaccinationTypeEnum} from '../utils/constant'
+import {APP_NAME, TABLE_HEADER} from '../utils/constant'
 
 import 'react-tailwind-table/dist/index.css'
-import {Team, TeamList, TeamType} from '../types/teamType'
+import {TeamType} from '../types/teamType'
 import TeamsAPI from '../api/covid'
-import {useMemo, useState} from 'react'
 import * as React from 'react'
-import {
-	DataGrid,
-	GridCellEditCommitParams,
-	GridColDef,
-	GridColumns,
-	GridRowsProp,
-	GridValueGetterParams,
-} from '@material-ui/data-grid'
-
+import {DataGrid, GridColDef} from '@material-ui/data-grid'
 import Protect from 'react-app-protect'
 import 'react-app-protect/dist/index.css'
 

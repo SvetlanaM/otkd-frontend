@@ -1,11 +1,8 @@
 import {
-	appendErrors,
 	DeepMap,
 	FieldError,
 	FieldValues,
-	useForm,
 	UseFormRegister,
-	UseFormRegisterReturn,
 } from 'react-hook-form'
 import TextInput from './InputType'
 
