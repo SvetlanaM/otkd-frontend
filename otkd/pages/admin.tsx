@@ -1,8 +1,6 @@
 import Head from 'next/head'
 import MainContentWithHeader from '../components/MainContent'
 import {APP_NAME, TABLE_HEADER} from '../utils/constant'
-
-import 'react-tailwind-table/dist/index.css'
 import {TeamType} from '../types/teamType'
 import TeamsAPI from '../api/covid'
 import * as React from 'react'

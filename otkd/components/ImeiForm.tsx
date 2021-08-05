@@ -50,7 +50,7 @@ const ImeiForm = ({onSubmit}: ImeiFormProps) => {
 			.then(() => setTimeout(() => setMessage([]), 8000))
 
 	return (
-		<div className="w-full md:w-2/6">
+		<div className="w-full md:w-2/6 mt-16 md:mt-0">
 			{message && (
 				<div className={`w-full ${type} text-white py-5 px-4 rounded`}>
 					{message}
@@ -73,7 +73,7 @@ const ImeiForm = ({onSubmit}: ImeiFormProps) => {
 				/>
 				<button
 					type="submit"
-					className="mt-5 flex w-full bg-orange text-white text-center justify-center p-3 rounded-md hover:bg-purple-medium">
+					className="mt-5 flex w-full bg-orange text-white text-center justify-center p-3 rounded-md hover:bg-purple-medium outline:none">
 					Zmeniť IMEI tímu
 				</button>
 			</form>

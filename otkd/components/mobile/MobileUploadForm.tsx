@@ -77,7 +77,7 @@ const MobileUploadForm = ({team_number, runner_id}: MobileUploadFormProps) => {
 	}
 
 	return (
-		<div className="w-full flex flex-col justify-center md:w-full mt-5">
+		<div className="w-full flex flex-col justify-center w-1/2 mt-5">
 			{message && (
 				<div className={`w-full ${type} text-white py-2 px-4 mb-3 rounded`}>
 					{message}
@@ -98,7 +98,7 @@ const MobileUploadForm = ({team_number, runner_id}: MobileUploadFormProps) => {
 						type="button"
 						className="w-full py-2.5 px-3 text-purple-light block rounded-md bg-purple-medium  border-none
               focus:outline-none focus:bg-purple-medium focus:border-none
-              focus:border focus:ring-purple-100 focus:ring-opacity-50 placeholder-gray text-left"
+              focus:border focus:ring-purple-100 focus:ring-opacity-50 placeholder-gray text-left outline:none"
 						onClick={openFileDialog}>
 						<div className="flex items-center">
 							<Image
@@ -108,7 +108,7 @@ const MobileUploadForm = ({team_number, runner_id}: MobileUploadFormProps) => {
 								height={16}
 								className="mb-0 file-upload-icon mr-3"
 							/>{' '}
-							<p className="ml-1">Nahrať alebo odfotiť potvrdenie</p>
+							<p className="ml-1">Nahrať potvrdenie</p>
 						</div>
 					</button>
 					<Controller

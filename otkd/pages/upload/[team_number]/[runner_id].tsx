@@ -12,7 +12,7 @@ type FormInputs = {
 
 const Title = (): JSX.Element => (
 	<h1 className="font-extrabold text-center uppercase text-lg">
-		Potvrdenie o bezinfekčnosti vírusom SARS-CoV-2
+		Potvrdenie o bezinfekčnosti vírusom COVID-19
 	</h1>
 )
 
