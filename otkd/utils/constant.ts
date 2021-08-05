@@ -23,7 +23,7 @@ const setFormatDate = (myDate: any): string => {
 	let date = myDate.row.created_date && new Date(myDate.row.created_date)
 
 	return date
-		? date.getDate() + '.' + date.getMonth() + '.' + date.getFullYear()
+		? date.getDate() + '.' + (date.getMonth() + 1) + '.' + date.getFullYear()
 		: '--'
 }
 
