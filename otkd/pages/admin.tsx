@@ -73,7 +73,7 @@ const AdminPage = ({teams}: AdminPageProps) => {
 
 const columns: GridColDef[] = TABLE_HEADER
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
 	try {
 		const {data} = await TeamsAPI.get()
 
