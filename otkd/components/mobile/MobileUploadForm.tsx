@@ -4,6 +4,7 @@ import {VaccinationTypeEnum} from '../../utils/constant'
 import {useS3Upload} from 'next-s3-upload'
 import TeamsAPI from '../../api/covid'
 import Image from 'next/image'
+import Loading from '../Loading'
 
 type FormInputs = {
 	vaccination_type: string
@@ -38,10 +39,12 @@ const MobileUploadForm = ({team_number, runner_id}: MobileUploadFormProps) => {
 	const {FileInput, openFileDialog, uploadToS3} = useS3Upload()
 
 	const handleFileChange = async (file: File) => {
+		setIsLoading(true)
 		let {url} = await uploadToS3(file)
 		setDocumentName(file.name)
 		setDocumentUrl(url)
 		setValue('document_url', file.name)
+		setIsLoading(false)
 	}
 
 	const vaccinationTypeOptions = useMemo(() => {
@@ -64,7 +67,9 @@ const MobileUploadForm = ({team_number, runner_id}: MobileUploadFormProps) => {
 			formData.vaccination_type
 		)
 			.then(() => setDocumentUrl(''))
-			.then(() => setMessage([`Dokument úspešne nahratý`, 'bg-green']))
+			.then(() => {
+				setMessage([`Dokument úspešne nahratý`, 'bg-green'])
+			})
 			.then(() => setTimeout(() => setMessage([]), 6000))
 			.catch(() => setMessage([`Nastala chyba. Skúste neskôr.`, 'bg-red-500']))
 			.then(() => setTimeout(() => setMessage([]), 5000))
@@ -76,6 +81,8 @@ const MobileUploadForm = ({team_number, runner_id}: MobileUploadFormProps) => {
 			)
 	}
 
+	const [isLoading, setIsLoading] = useState<boolean>(false)
+
 	return (
 		<div className="w-full flex flex-col justify-center w-1/2 mt-5">
 			{message && (
@@ -83,6 +90,7 @@ const MobileUploadForm = ({team_number, runner_id}: MobileUploadFormProps) => {
 					{message}
 				</div>
 			)}
+
 			<form
 				onSubmit={handleSubmit(onSubmitForm)}
 				className="w-full flex justify-center items-center flex-col">
@@ -120,13 +128,19 @@ const MobileUploadForm = ({team_number, runner_id}: MobileUploadFormProps) => {
 						render={() => <FileInput onChange={handleFileChange} type="file" />}
 					/>
 					{errors.document_url && (
-						<div className="mt-3.5 text-red-600">Dokument je povinný!</div>
+						<div className="mt-4 text-red-600">Dokument je povinný!</div>
 					)}
-					{documentUrl && (
-						<div className="mt-3.5 text-sm text-purple-light">
-							Dokument načítaný: {documentName}
-						</div>
-					)}
+
+					<div
+						className={`${
+							documentUrl && 'mt-4 h-5 mt-2'
+						} text-sm text-purple-light`}>
+						{!isLoading ? (
+							documentUrl && `Dokument načítaný: ${documentName}`
+						) : (
+							<Loading />
+						)}
+					</div>
 				</div>
 
 				<button
