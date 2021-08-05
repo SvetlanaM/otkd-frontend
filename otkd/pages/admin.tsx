@@ -91,7 +91,6 @@ export async function getStaticProps() {
 			props: {
 				teams: sortedTeam,
 			},
-			revalidate: 1,
 		}
 	} catch (error) {
 		console.error(error)
