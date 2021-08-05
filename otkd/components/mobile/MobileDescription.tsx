@@ -26,6 +26,7 @@ const MobileDescription = (): JSX.Element => {
 							alt="Sipka"
 							width={20}
 							height={20}
+							priority
 						/>
 					</div>
 				) : (
@@ -37,6 +38,7 @@ const MobileDescription = (): JSX.Element => {
 							width={20}
 							height={20}
 							className="rotate-90 transform"
+							priority
 						/>
 					</div>
 				)}

@@ -113,6 +113,7 @@ const MobileUploadForm = ({team_number, runner_id}: MobileUploadFormProps) => {
 								src={'/icons/file_upload.svg'}
 								alt="Nahrat subor"
 								width={16}
+								priority
 								height={16}
 								className="mb-0 file-upload-icon mr-3"
 							/>{' '}
