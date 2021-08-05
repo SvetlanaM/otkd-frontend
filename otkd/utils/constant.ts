@@ -82,11 +82,4 @@ export const TABLE_HEADER: TableHeader[] = [
 		valueGetter: setFormatDate,
 		type: 'date',
 	},
-	{
-		field: 'document_validated',
-		headerName: 'Potvrdenie nahraté?',
-		editable: true,
-		width: 230,
-		type: 'boolean',
-	},
 ]
