@@ -150,13 +150,6 @@
     prop-types "^15.7.2"
     reselect "^4.0.0"
 
-"@material-ui/icons@^4.11.2":
-  version "4.11.2"
-  resolved "https://registry.yarnpkg.com/@material-ui/icons/-/icons-4.11.2.tgz#b3a7353266519cd743b6461ae9fdfcb1b25eb4c5"
-  integrity sha512-fQNsKX2TxBmqIGJCSi3tGTO/gZ+eJgWmMJkgDiOfyNaunNaxcklJQFaFogYcFl0qFuaEz1qaXYXboa/bUXVSOQ==
-  dependencies:
-    "@babel/runtime" "^7.4.4"
-
 "@material-ui/styles@^4.11.4":
   version "4.11.4"
   resolved "https://registry.yarnpkg.com/@material-ui/styles/-/styles-4.11.4.tgz#eb9dfccfcc2d208243d986457dff025497afa00d"
@@ -3117,11 +3110,6 @@ react-refresh@0.8.3:
   version "0.8.3"
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.8.3.tgz#721d4657672d400c5e3c75d063c4a85fb2d5d68f"
   integrity sha512-X8jZHc7nCMjaCqoU+V2I0cOhNW+QMBwSUkeXnTi8IPe6zaRWfn60ZzvFDZqWPfmSJfjub7dDW1SP0jaHWLu/hg==
-
-react-tailwind-table@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/react-tailwind-table/-/react-tailwind-table-1.1.1.tgz#0b30fe64645c263b1899b74e1befd333d0655ea1"
-  integrity sha512-X+3MFk/6DBZ/TSlrOPAkKiwHTMaEOBqVKTVytzAW4F0aT8bEvokiiEjkQ1zPOYUETjW6LrRb2Hb9FczqWjJYnw==
 
 react-transition-group@^4.4.0:
   version "4.4.2"
