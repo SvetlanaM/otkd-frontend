@@ -23,15 +23,32 @@ interface AdminPageProps {
 	teams: TeamType[]
 }
 
+const updateData = async (
+	team_number: number,
+	runner_id: number,
+	documentUrl: string,
+	vaccination_type: string
+): Promise<any> => {
+	return await TeamsAPI.create_confirmation(
+		team_number,
+		runner_id,
+		documentUrl,
+		vaccination_type
+	).catch(() => alert('Nastala chyba, skuste neskor'))
+}
+
 const AdminPage = ({teams}: AdminPageProps) => {
 	const temp = teams.map((item, id) => (item['id'] = id + 1))
 
 	const [rows, setRows] = React.useState<any[]>(teams)
 
 	const onToggleEditMode = (id: any) => {
-		console.log(id)
-		// console.log(id.props.value)
-		console.log(rows.find((item) => item.id === Number(id.id)))
+		let vaccination_type = id.props.value ? id.props.value : null
+		const {team_number, number, type, url} = rows.find(
+			(item) => item.id === Number(id.id)
+		)
+
+		updateData(team_number, number, url, vaccination_type)
 	}
 
 	return (

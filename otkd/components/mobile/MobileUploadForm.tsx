@@ -68,9 +68,7 @@ const MobileUploadForm = ({team_number, runner_id}: MobileUploadFormProps) => {
 			.then(() => setDocumentUrl(''))
 			.then(() => setMessage([`Dokument úspešne nahratý`, 'bg-green']))
 			.then(() => setTimeout(() => setMessage([]), 6000))
-			.catch((data) =>
-				setMessage([`Nastala chyba. Skúste neskôr.`, 'bg-red-500'])
-			)
+			.catch(() => setMessage([`Nastala chyba. Skúste neskôr.`, 'bg-red-500']))
 			.then(() => setTimeout(() => setMessage([]), 5000))
 			.then(() =>
 				reset({
