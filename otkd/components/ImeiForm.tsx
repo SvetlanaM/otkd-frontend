@@ -22,22 +22,33 @@ const ImeiForm = ({onSubmit}: ImeiFormProps) => {
 
 	const onSubmitForm: SubmitHandler<FormInputs> = (data) =>
 		onSubmit(data)
-			.then((data) =>
-				data && data.old_data
-					? setMessage([
-							`Dáta pre tím ${data.old_data.team_number} zmenené z pôvodného IMEI ${data.old_data.imei}.`,
-							'bg-green',
-					  ])
-					: setMessage([`Nový tím a tracker založený.`, 'bg-green'])
-			)
-			.then(() => setTimeout(() => setMessage([]), 7000))
+			.then((data) => {
+				if (data.old_data.length === 1) {
+					return setMessage([
+						`Data zmenene. Prechadzajuci tim ${data.old_data[0].team_number} s predchadzaujecim IMEI ${data.old_data[0].imei}.`,
+						'bg-green',
+					])
+				}
+
+				if (data && data.old_data.length === 2) {
+					return setMessage([
+						`Dáta zmenené pre tímy: ${data.old_data
+							.map((team) => team.team_number)
+							.join(', ')}`,
+						'bg-orange',
+					])
+				}
+
+				return setMessage([`Nový tím a tracker založený.`, 'bg-green'])
+			})
+			.then(() => setTimeout(() => setMessage([]), 8000))
 			.catch(() =>
 				setMessage([
 					`Nastala chyba. Skúste neskôr alebo skontrolujte zadané dáta.`,
 					'bg-red-500',
 				])
 			)
-			.then(() => setTimeout(() => setMessage([]), 5000))
+			.then(() => setTimeout(() => setMessage([]), 8000))
 
 	return (
 		<div className="w-full md:w-2/6">
