@@ -14,7 +14,7 @@ const MobileDescription = (): JSX.Element => {
 			className="mt-6 font-lighter leading-1 tracking-wide text-sm text-purple-light"
 			ref={ref}>
 			Dokument je možné nahrať priamo v aplikácii, prípadne sa ním preukázať na
-			štarte alebo poslať na oficiálny email beh345@odtatierkdunaju.sk.
+			štarte osobne.
 			<a
 				onClick={() => setShowMore(!showMore)}
 				className="w-full focus:outline-none font-semibold">
@@ -55,8 +55,7 @@ const MobileDescription = (): JSX.Element => {
 							výsledkom,
 						</li>
 						<li className="pb-2">
-							3. Očkovanie proti ochoreniu COVID-19 (14 dní po druhej dávke
-							alebo 21 dní po prvej dávke) formou certifikátu alebo QR kódu
+							3. Dokončené očkovanie proti ochoreniu COVID-19
 						</li>
 						<li className="pb-2">
 							4. Maximálne 180 dní staré laboratórne potvrdenie o prekonaní
