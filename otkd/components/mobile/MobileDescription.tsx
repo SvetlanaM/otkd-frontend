@@ -47,18 +47,31 @@ const MobileDescription = (): JSX.Element => {
 				<>
 					<ol className="mt-3.5">
 						<li className="pb-2">
-							1. Maximálne 7 dní staré PCR vyšetrenie na prítomnosť vírusu
-							SARS-CoV-2 s negatívnym výsledkom,
+							1. Maximálne 72 hodín staré RT PCR alebo LAMP vyšetrenie na
+							prítomnosť vírusu SARS-CoV-2 s negatívnym výsledkom,
 						</li>
 						<li className="pb-2">
-							2. Maximálne 72 hodín staré antigénové testovanie s negatívnym
+							2. Maximálne 24 hodín staré antigénové testovanie s negatívnym
 							výsledkom,
 						</li>
 						<li className="pb-2">
-							3. Dokončené očkovanie proti ochoreniu COVID-19
+							3. Najmenej 14 dní, ale nie viac než 12 mesiacov po aplikácii
+							druhej dávky očkovacej látky proti ochoreniu COVID-19 s
+							dvojdávkovou schémou,
 						</li>
 						<li className="pb-2">
-							4. Maximálne 180 dní staré laboratórne potvrdenie o prekonaní
+							4. Najmenej 21 dní, ale nie viac než 12 mesiacov po aplikácii
+							prvej dávky očkovacej látky proti ochoreniu COVID-19 s
+							jednodávkovou schémou,
+						</li>
+						<li className="pb-2">
+							5. Najmenej 14 dní a nie viac než 12 mesiacov po aplikácii prvej
+							dávky očkovacej látky proti ochoreniu COVID-19, ak bola prvá dávka
+							očkovania proti ochoreniu COVID-19 podaná v intervale do 180 dní
+							od prekonania ochorenia COVID-19,
+						</li>
+						<li className="pb-2">
+							6. Maximálne 180 dní staré laboratórne potvrdenie o prekonaní
 							ochorenia COVID-19
 						</li>
 					</ol>

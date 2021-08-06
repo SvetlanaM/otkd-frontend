@@ -4,8 +4,8 @@ export const APP_NAME = 'OTKD administrácia'
 
 export enum VaccinationTypeEnum {
 	vaccination = 'Potvrdenie o očkovaní',
-	antigen_test = 'Antigénový test',
-	pcr_test = 'PCR test',
+	antigen_test = 'Antigénový alebo LAMP test',
+	pcr_test = 'RT PCR test',
 	cured_confirmation = 'Potvrdenie o prekonaní COVID-19',
 }
 interface TableHeader {
