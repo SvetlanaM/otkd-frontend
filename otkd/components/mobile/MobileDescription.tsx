@@ -14,7 +14,7 @@ const MobileDescription = (): JSX.Element => {
 			className="mt-6 font-lighter leading-1 tracking-wide text-sm text-purple-light"
 			ref={ref}>
 			Dokument je možné nahrať priamo v aplikácii, prípadne sa ním preukázať na
-			štarte osobne. Dajte si pozor na certifikáty zabezpečené heslom, nie sú akceptované.
+			štarte osobne. Uistite sa prosím, že certifikát nie je chránený heslom.
 			<a
 				onClick={() => setShowMore(!showMore)}
 				className="w-full focus:outline-none font-semibold">
