@@ -30,7 +30,7 @@ export const TextInputItem = ({
 		'focus:ring-purple-medium focus:border-purple-medium',
 		'border-blue-dark',
 	]
-	const team_numbers = Array.from(Array(300).keys())
+	const team_numbers = Array.from(Array(500).keys())
 
 	const isTeamNumber = (team_number: number) =>
 		team_numbers.includes(Number(team_number))
