@@ -39,12 +39,20 @@ const MobileUploadForm = ({team_number, runner_id}: MobileUploadFormProps) => {
 	const {FileInput, openFileDialog, uploadToS3} = useS3Upload()
 
 	const handleFileChange = async (file: File) => {
-		setIsLoading(true)
-		let {url} = await uploadToS3(file)
-		setDocumentName(file.name)
-		setDocumentUrl(url)
-		setValue('document_url', file.name)
-		setIsLoading(false)
+		if (file.size < 5000000) {
+			setIsLoading(true)
+			let {url} = await uploadToS3(file)
+			setDocumentName(file.name)
+			setDocumentUrl(url)
+			setValue('document_url', file.name)
+			setIsLoading(false)
+		} else {
+			setMessage([
+				`Maximálna veľkosť nahrávaného súboru je 5MB. Nahrajte prosím súbor v menšej veľkosti.`,
+				'bg-red-500',
+			])
+			setTimeout(() => setMessage([]), 5000)
+		}
 	}
 
 	const vaccinationTypeOptions = useMemo(() => {
@@ -68,7 +76,10 @@ const MobileUploadForm = ({team_number, runner_id}: MobileUploadFormProps) => {
 		)
 			.then(() => setDocumentUrl(''))
 			.then(() => {
-				setMessage([`Dokument úspešne nahratý organizátorovi. Behu zdar :)`, 'bg-green'])
+				setMessage([
+					`Dokument úspešne nahratý organizátorovi. Behu zdar :)`,
+					'bg-green',
+				])
 			})
 			.then(() => setTimeout(() => setMessage([]), 6000))
 			.catch(() => setMessage([`Nastala chyba. Skúste neskôr.`, 'bg-red-500']))
@@ -126,7 +137,15 @@ const MobileUploadForm = ({team_number, runner_id}: MobileUploadFormProps) => {
 						rules={{
 							required: true,
 						}}
-						render={() => <FileInput onChange={handleFileChange} type="file" />}
+						render={() => (
+							<FileInput
+								onChange={handleFileChange}
+								type="file"
+								restrictions={{
+									maxFileSize: 5000000,
+								}}
+							/>
+						)}
 					/>
 					{errors.document_url && (
 						<div className="mt-4 text-red-600">Dokument je povinný!</div>
